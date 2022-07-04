@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://rsms.me/inter/inter.css");
+
+@import "./variables";
+
+@import "./colores";
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  overflow: overlay;
+  // font-family: $font-general;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 10px;
+  &:hover {
+    background: #d12f2a;
+  }
+}
+
+::-webkit-scrollbar-corner {
+  border-radius: 10px;
+}
+
+//Extend
+%bg-center {
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@each $valor, $color in $colores {
+  .txt-#{$valor} {
+    //clases de texto con color
+    color: $color;
+  }
+  .bgc-#{$valor} {
+    //clases de background con color
+    background-color: $color;
+  }
+}
+
+/*Barra de navegacion*/
+.nav-link {
+  font-family: $font-general;
+}
+.active {
+  font-weight: 700;
+}
+.bg-white {
+  background-color: $white;
+}
+
+/* Banner Principal */
+header {
+  z-index: 4;
+}
+.banner {
+  @extend %bg-center;
+  font-family: $font-hero;
+  background-image: url(../img/prise.webp);
+  height: 86vh;
+
+  &__titulo {
+    font-weight: 700;
+    color: map-get($colores, "white");
+  }
+  &__texto {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: map-get($colores, "white");
+  }
+  @media screen and (max-width: 767px) {
+    &__titulo {
+      text-align: center;
+    }
+
+    &__texto {
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+}
+/* End Banner Principal */
+
+// Botones
+.btn-white {
+  background-color: $primary;
+  color: $white;
+  transition: ease-in-out 0.6s;
+  &:hover {
+    background-color: $white;
+    color: $primary;
+  }
+}
+
+.btn-primary-3 {
+  background-color: #1b1f3b;
+  color: $white;
+  transition: ease-in-out 0.6s;
+  &:hover {
+    background-color: #0f1121;
+    color: $white;
+  }
+}
+/* Todas las section */
+
+@mixin overflow-hidden {
+  overflow: hidden;
+}
+
+section {
+  @include overflow-hidden;
+  padding: 4% 0;
+}
+
+.oferflow-hidden {
+  @include overflow-hidden;
+}
+
+/* Seccion Quienes Somos */
+.quienes-somos {
+  background-color: #fafbfa;
+  &__info h2 {
+    text-align: justify;
+  }
+  &__info p {
+    text-align: justify;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+  }
+}
+/* End Seccion Quienes Somos */
+
+/* All buttons */
+.btn {
+  &__texto {
+    color: $white;
+  }
+  svg {
+    transition: all 0.5s;
+    transform: scale(0) translateX(0);
+  }
+  &:hover {
+    svg {
+      display: inline-block;
+      fill: #fff;
+      transform: scale(1) translateX(1px);
+    }
+  }
+}
+.btn-red {
+  color: $white;
+  background-color: $primary;
+  border-color: $primary;
+  transition: all 0.6s;
+  &:hover,
+  &:focus,
+  &:active {
+    color: $white;
+    background-color: $secondary;
+    border-color: $secondary;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Seccion Servicios */
+.servicios {
+  &__titulo {
+    text-align: center;
+    color: $primary;
+  }
+  &__description {
+    text-align: justify;
+  }
+}
+
+/* background footer */
+.bd-navbar {
+  @extend %bg-center;
+  background-image: url(../img/background-square.webp);
+  .navbar-nav {
+    .nav-link {
+      color: rgba(255, 255, 255, 0.85);
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}
+
+footer {
+  font-family: $font-general;
+  background-color: $secondary;
+  .tr {
+    vertical-align: -0.125em;
+    fill: $white;
+  }
+}
+/* Fin background footer */
+
+.fade-in {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  /* animation-delay: .2s ; */
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* banner para todos los servicios*/
+.banner-contacto {
+  background-image: url(../img/banner2-background.webp);
+  @extend %bg-center;
+  height: auto;
+}
+/* End banner para todos los servicios */
+
+/* Nosotros */
+.nosotros-info p {
+  text-align: justify;
+}
+
+.clouds {
+  background-image: url(../img/wallpaper-redclouds.webp);
+  @extend %bg-center;
+  &__titulo {
+    text-align: center;
+  }
+  &__parrafo {
+    text-align: center;
+  }
+  &__mv {
+    max-width: 30%;
+    height: auto;
+    // width: 100px;
+  }
+}
+/* End nosotros */
+
+/* Pagina Servicios */
+.servicios-info {
+  p {
+    text-align: justify;
+  }
+  &__galeria img {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+    transition: all 0.8s;
+    &:hover {
+      opacity: 1;
+      transform: translateY(-15px);
+      box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+/* End Pagina Servicios */
+
+/* Asesoria en derecho laboral */
+.derecho-laboral__info p {
+  text-align: justify;
+}
+
+/* Background gris */
+.container-bg {
+  background-color: $gris;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
